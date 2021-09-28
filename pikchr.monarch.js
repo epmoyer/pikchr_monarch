@@ -56,8 +56,6 @@ return {
 
     nthObject: ['last', 'previous'],
   
-    // TODO: Figure out how to properly handle the dot.  These properties are mostly (if not all)
-    //       repeated elsewhere without the dot, so they highlight.
     dotEdgenames: [ 
         'n', 'north', 't', 'top', 'ne', 'e', 'east', 'right', 'se', 's', 
         'south', 'bot', 'bottom', 'sw', 'w', 'west', 'left', 'nw', 'c', 
@@ -77,8 +75,6 @@ return {
         'x', 'y'
     ],
     
-    // TODO: Figure out how to properly handle the dot.  These properties are mostly (if not all)
-    //       repeated elsewhere without the dot, so they highlight.
     dotProperties: [
         'color', 'dashed', 'diameter', 'dotted', 'fill', 'ht', 'height', 'rad', 
         'radius', 'thickness', 'wid', 'width'
@@ -228,7 +224,7 @@ return {
                                      '@labelKeywords': 'keyword',
                                      '@nthObject': 'keyword',
                                      '@edgenames': 'keyword',
-                                     '@expressionKeywords': 'keyword',
+                                     '@expressionKeywords': 'support.function',
                                      '@builtInVariables': 'keyword',
                                      '@specialVariables': 'keyword',
                                      '@textAttributes': 'keyword',
