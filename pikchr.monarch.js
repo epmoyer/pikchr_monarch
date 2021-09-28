@@ -3,15 +3,8 @@
 //    monarch: https://microsoft.github.io/monaco-editor/monarch.html
 //
 // TODO:
-//    - Do something with "\" line continuation?
 //    - Many keywords are repeated below. Decide whether to lump them
 //      together.
-//    - Highlighting of dotted items is inconsistent. See .y .sw .ht in 
-//      the 'SQLite Architecture Diagram' example.  Need to write a regex
-//      with look-behind to specifically look for the dot, and color dotted
-//      items consistently differently than their stand-alone keyword
-//      counterparts (i.e. the n in 'object.n' vs. 'at 10px n of object').
-//      Also see `previous.radius`.
 //    - Units in '$r = 0.2in' are incorrectly colored as a 'keyword' (because 'in'
 //      is both a keyword and a unit).  Fix.
 //    - Units in '1.5px' incorrectly tokenized.  Fix.  (Generally <float><unit>).
@@ -225,7 +218,7 @@ return {
                                      '@attributes': 'keyword',
                                      '@numericProperties': 'keyword',
                                      '@pathAttributes': 'keyword',
-                                     '@compassDirection': 'support.function',
+                                     '@compassDirection': 'keyword',
                                      '@locationAttribute': 'keyword',
                                      '@position': 'keyword',
                                      '@whichWayFrom': 'keyword',
