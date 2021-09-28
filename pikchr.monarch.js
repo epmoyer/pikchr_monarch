@@ -245,7 +245,7 @@ return {
         // delimiters and operators
         [/[{}()\[\]]/, '@brackets'],
         [/[<>](?!@symbols)/, '@brackets'],
-        [/@symbols/, { cases: { '@operators': 'operators',
+        [/@symbols/, { cases: { '@operators': 'operator',
                                 '@default'  : '' } } ],
   
         // numbers
