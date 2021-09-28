@@ -26,7 +26,9 @@
 //        string (including the percentage symbol) as `constant.numeric`.
 //      - The escape characters supported within strings may be more extensive than
 //        those actually supported by pikchr.
-//
+//      - 'linrad' has been included in builtInVariables.  It is not (currently) listed
+//        in the language spec but IS supported by the language and DOES appear in some
+//        published examples.
 //
 return {
     // Set defaultToken to invalid to see what you do not tokenize yet
@@ -102,8 +104,6 @@ return {
       '=', '+=', '-=', '*=', '/=', '+', '-', '*', '/', '<', '>'
     ],
 
-    // NOTE: 'linerad' is not listed in the documentation but does exist in scripts and
-    // IS a recognized built-in variable.
     builtInVariables: [
       'arcrad', 'arrowhead', 'arrowht', 'arrowwid', 'boxht', 'boxrad', 'boxwid', 'charht',
       'charwid', 'circlerad', 'color', 'cylht', 'cylrad', 'cylwid', 'dashwid', 'dotrad',
