@@ -66,10 +66,10 @@ return {
   
     // TODO: Figure out how to properly handle the dot.  These properties are mostly (if not all)
     //       repeated elsewhere without the dot, so they highlight.
-    dotEdgenames: [
-        '.n', '.north', '.t', '.top', '.ne', '.e', '.east', '.right', '.se', '.s', 
-        '.south', '.bot', '.bottom', '.sw', '.w', '.west', '.left', '.nw', '.c', 
-        '.center', '.start', '.end'
+    dotEdgenames: [ 
+        'n', 'north', 't', 'top', 'ne', 'e', 'east', 'right', 'se', 's', 
+        'south', 'bot', 'bottom', 'sw', 'w', 'west', 'left', 'nw', 'c', 
+        'center', 'start', 'end'
     ],
 
     edgenames: [
@@ -86,8 +86,8 @@ return {
     // TODO: Figure out how to properly handle the dot.  These properties are mostly (if not all)
     //       repeated elsewhere without the dot, so they highlight.
     dotProperties: [
-        '.color', '.dashed', '.diameter', '.dotted', '.fill', '.ht', '.height', '.rad', 
-        '.radius', '.thickness', '.wid', '.width'
+        'color', 'dashed', 'diameter', 'dotted', 'fill', 'ht', 'height', 'rad', 
+        'radius', 'thickness', 'wid', 'width'
     ],
 
     operators: [
@@ -194,11 +194,25 @@ return {
         [/^[A-Z][\w_]*(?=:)/, 'entity.name.function' ], 
 
         // Camel case colors
-        [/[A-Z]\w*/, { cases: { '@colorsCamelCase': 'constant.language',
-                                // A word that begins with a capital and is not
-                                // a CamelCase color is assumed to be a Label reference
-                                '@default': 'entity.name.function'  // Labels
-                              }}],
+        [/[A-Z]\w*/, { cases: { 
+            '@colorsCamelCase': 'constant.language',
+            // A word that begins with a capital and is not
+            // a CamelCase color is assumed to be a Label reference
+            '@default': 'entity.name.function'  // Labels
+        }}],
+
+        // Dotted suffixes
+        [/(\.)([a-z][\w$]*)/,
+          [
+            // The dot
+            'delimiter',
+            // Text after the dot 
+            { cases: {
+              '@dotEdgenames': 'support.function',
+              '@dotProperties': 'support.function',
+            }}
+          ]
+        ],
   
         // identifiers and keywords
         [/[a-z_$][\w$]*/, { cases: { '@colorsLowerCase': 'constant.language',
@@ -208,17 +222,17 @@ return {
                                      '@attributes': 'keyword',
                                      '@numericProperties': 'keyword',
                                      '@pathAttributes': 'keyword',
-                                     '@compassDirection': 'support.function',
+                                     //'@compassDirection': 'support.function',
                                      '@locationAttribute': 'keyword',
                                      '@position': 'keyword',
-                                     '@whichWayFrom': 'keyword',
+                                     //'@whichWayFrom': 'keyword',
                                      '@place': 'keyword',
                                      '@labelKeywords': 'keyword',
                                      '@nthObject': 'keyword',
                                      '@edgenames': 'keyword',
-                                     '@dotEdgenames': 'keyword',
+                                     //'@dotEdgenames': 'keyword',
                                      '@expressionKeywords': 'keyword',
-                                     '@dotProperties': 'keyword',
+                                     //'@dotProperties': 'keyword',
                                      '@builtInVariables': 'keyword',
                                      '@specialVariables': 'keyword',
                                      '@textAttributes': 'keyword',
