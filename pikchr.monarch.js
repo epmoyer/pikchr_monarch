@@ -10,7 +10,7 @@
 //         are not strictly speaking function-like. 
 //       - Dotted suffixes are assigned 'variable.parameter'.  That token has no
 //         direct analog in pikchr, so I appropriated it.
-//       - Some keywords (i.g. 'right') are repeated in multiple keyword groups.
+//       - Some keywords (e.g. 'right') are repeated in multiple keyword groups.
 //         The keyword groups directly map to the language syntax specification whenever
 //         possible, so repeating them (per the spec) makes the implementation more
 //         maintainable.
