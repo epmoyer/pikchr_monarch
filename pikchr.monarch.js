@@ -2,6 +2,13 @@
 //    pikchr: https://pikchr.org/home/doc/trunk/homepage.md
 //    monarch: https://microsoft.github.io/monaco-editor/monarch.html
 //
+// NOTES:
+//    - I took some artistic liberties with token assignment.  The group
+//      `expressionKeywords` is reasonably assigned 'support.function', but it
+//      was useful for readability (and a "linting" aid) to also assign that
+//      token to elements which were not strictly function-like (namely
+//      `object_classes` and dotted suffixes).
+//
 // TODO:
 //    - Many keywords are repeated below. Decide whether to lump them
 //      together.
@@ -67,7 +74,6 @@ return {
         'bot', 'bottom', 'left', 'right', 'c', 'center', 'start', 'end'
     ],
 
-    // TODO: Figure out how to properly handle the dot 
     expressionKeywords: [ 
         'abs', 'cos', 'dist', 'int', 'max', 'min', 'sin', 'sqrt'
     ],
