@@ -4,31 +4,31 @@
 //
 // NOTES:
 //    - I took some artistic liberties with token assignments.
-//      - The group `expressionKeywords` is reasonably assigned the token
-//        'support.function', but it was useful for readability (and as
-//        a "linting" aid) to also assign that token to `object_classes`, which
-//        are not strictly speaking function-like. 
-//      - Dotted suffixes are assigned 'variable.parameter'.  That token has no
-//        direct analog in pikchr, so I appropriated it.
-//      - Some keywords (i.g. 'right') are repeated in multiple keyword groups.
-//        The keyword groups directly map to the language syntax specification whenever
-//        possible, so repeating them (per the spec) makes the implementation more
-//        maintainable.
+//       - The group `expressionKeywords` is reasonably assigned the token
+//         'support.function', but it was useful for readability (and as
+//         a "linting" aid) to also assign that token to `object_classes`, which
+//         are not strictly speaking function-like. 
+//       - Dotted suffixes are assigned 'variable.parameter'.  That token has no
+//         direct analog in pikchr, so I appropriated it.
+//       - Some keywords (i.g. 'right') are repeated in multiple keyword groups.
+//         The keyword groups directly map to the language syntax specification whenever
+//         possible, so repeating them (per the spec) makes the implementation more
+//         maintainable.
 //
 // KNOWN ISSUES:
-//      - pikchr supports the syntax `expr %`, so it is possible to write:
-//           $size_percentage
-//           circle "circle" radius $size_percentage %
-//        The space between expr and the % is optional.
-//        We currently DO NOT attempt to tokenize the "%" in this case.
-//        We DO (however) tokenize percentages expressed as constants with no
-//        intervening space (e.g. '50%', in which case we tokenize the entire
-//        string (including the percentage symbol) as `constant.numeric`.
-//      - The escape characters supported within strings may be more extensive than
-//        those actually supported by pikchr.
-//      - 'linrad' has been included in builtInVariables.  It is not (currently) listed
-//        in the language spec but IS supported by the language and DOES appear in some
-//        published examples.
+//    - pikchr supports the syntax `expr %`, so it is possible to write:
+//         $size_percentage
+//         circle "circle" radius $size_percentage %
+//      The space between expr and the % is optional.
+//      We currently DO NOT attempt to tokenize the "%" in this case.
+//      We DO (however) tokenize percentages expressed as constants with no
+//      intervening space (e.g. '50%', in which case we tokenize the entire
+//      string (including the percentage symbol) as `constant.numeric`.
+//    - The escape characters supported within strings may be more extensive than
+//      those actually supported by pikchr.
+//    - 'linrad' has been included in builtInVariables.  It is not (currently) listed
+//      in the language spec but IS supported by the language and DOES appear in some
+//      published examples.
 //
 return {
     // Set defaultToken to invalid to see what you do not tokenize yet
