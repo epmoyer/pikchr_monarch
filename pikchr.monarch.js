@@ -79,8 +79,10 @@ return {
 
     // TODO: Figure out how to properly handle the dot 
     expressionKeywords: [ 
-        //'.x', '.y',
-        'x', 'y', 'abs', 'cos', 'dist', 'int', 'max', 'min', 'sin', 'sqrt'
+        'abs', 'cos', 'dist', 'int', 'max', 'min', 'sin', 'sqrt'
+    ],
+    dotExpressionKeywords: [
+        'x', 'y'
     ],
     
     // TODO: Figure out how to properly handle the dot.  These properties are mostly (if not all)
@@ -210,6 +212,7 @@ return {
             { cases: {
               '@dotEdgenames': 'support.function',
               '@dotProperties': 'support.function',
+              '@dotExpressionKeywords': 'support.function',
             }}
           ]
         ],
@@ -222,17 +225,15 @@ return {
                                      '@attributes': 'keyword',
                                      '@numericProperties': 'keyword',
                                      '@pathAttributes': 'keyword',
-                                     //'@compassDirection': 'support.function',
+                                     '@compassDirection': 'support.function',
                                      '@locationAttribute': 'keyword',
                                      '@position': 'keyword',
-                                     //'@whichWayFrom': 'keyword',
+                                     '@whichWayFrom': 'keyword',
                                      '@place': 'keyword',
                                      '@labelKeywords': 'keyword',
                                      '@nthObject': 'keyword',
                                      '@edgenames': 'keyword',
-                                     //'@dotEdgenames': 'keyword',
                                      '@expressionKeywords': 'keyword',
-                                     //'@dotProperties': 'keyword',
                                      '@builtInVariables': 'keyword',
                                      '@specialVariables': 'keyword',
                                      '@textAttributes': 'keyword',
