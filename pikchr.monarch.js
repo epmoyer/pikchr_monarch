@@ -6,6 +6,11 @@
 //    - Do something with "\" line continuation?
 //    - Many keywords are repeated below. Decide whether to lump them
 //      together.
+//    - Highlighting of dotted items is inconsistent. See .y .sw .ht in 
+//      the 'SQLite Architecture Diagram' example.  Need to write a regex
+//      with look-behind to specifically look for the dot, and color dotted
+//      items consistently differently than their stand-alone keyword
+//      counterparts (i.e. the n in 'object.n' vs. 'at 10px n of object').
 return {
     // Set defaultToken to invalid to see what you do not tokenize yet
     // defaultToken: 'invalid',
