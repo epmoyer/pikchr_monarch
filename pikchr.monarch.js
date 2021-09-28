@@ -11,6 +11,8 @@
 //      with look-behind to specifically look for the dot, and color dotted
 //      items consistently differently than their stand-alone keyword
 //      counterparts (i.e. the n in 'object.n' vs. 'at 10px n of object').
+//    - Units in '$r = 0.2in' are incorrectly colored as a 'keyword' (because 'in'
+//      is both a keyword and a unit).  Fix.
 return {
     // Set defaultToken to invalid to see what you do not tokenize yet
     // defaultToken: 'invalid',
