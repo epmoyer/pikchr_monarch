@@ -1,17 +1,21 @@
-// Monarch syntax highighting for pickchr
+// Monarch syntax highlighting for pikchr
 //    pikchr: https://pikchr.org/home/doc/trunk/homepage.md
 //    monarch: https://microsoft.github.io/monaco-editor/monarch.html
 //
 // NOTES:
-//    - I took some artistic liberties with token assignment.  The group
-//      `expressionKeywords` is reasonably assigned 'support.function', but it
-//      was useful for readability (and a "linting" aid) to also assign that
-//      token to elements which were not strictly function-like (namely
-//      `object_classes` and dotted suffixes).
+//    - I took some artistic liberties with token assignments.
+//      - The group `expressionKeywords` is reasonably assigned the token
+//        'support.function', but it was useful for readability (and as
+//        a "linting" aid) to also assign that token to `object_classes`, which
+//        are not strictly speaking function-like. 
+//      - Dotted suffixes are assigned 'variable.parameter'.  That token has no
+//        direct analog in pikchr, so I appropriated it.
+//      - Some keywords (i.g. 'right') are repeated in multiple keyword groups.
+//        The keyword groups directly map to the language syntax specification whenever
+//        possible, so repeating them (per the spec) makes the implementation more
+//        maintainable.
 //
 // TODO:
-//    - Many keywords are repeated below. Decide whether to lump them
-//      together.
 //    - Units in '$r = 0.2in' are incorrectly colored as a 'keyword' (because 'in'
 //      is both a keyword and a unit).  Fix.
 //    - Units in '1.5px' incorrectly tokenized.  Fix.  (Generally <float><unit>).
@@ -204,9 +208,9 @@ return {
             'delimiter',
             // Text after the dot 
             { cases: {
-              '@dotEdgenames': 'support.function',
-              '@dotProperties': 'support.function',
-              '@dotExpressionKeywords': 'support.function',
+              '@dotEdgenames': 'variable.parameter',
+              '@dotProperties': 'variable.parameter',
+              '@dotExpressionKeywords': 'variable.parameter',
             }}
           ]
         ],
