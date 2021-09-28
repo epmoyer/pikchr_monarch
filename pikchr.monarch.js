@@ -1,4 +1,6 @@
-// Pickchr
+// Monarch syntax highighting for pickchr
+//    pikchr: https://pikchr.org/home/doc/trunk/homepage.md
+//    monarch: https://microsoft.github.io/monaco-editor/monarch.html
 //
 // TODO:
 //    - Do something with "\" line continuation?
@@ -159,7 +161,8 @@ return {
 
     // we include these common regular expressions
     symbols:  /[=><!~?:&|+\-*\/\^%]+/,
-  
+ 
+    // TODO: Not sure yet what escapes pikchr support, but for now this is doing no harm.
     // C# style strings
     escapes: /\\(?:[abfnrtv\\"']|x[0-9A-Fa-f]{1,4}|u[0-9A-Fa-f]{4}|U[0-9A-Fa-f]{8})/,
   
@@ -173,9 +176,8 @@ return {
         // Variables of the form '$<variable_name>'
         // [/\$\S+/, 'variable.parameter' ],
 
-        // TODO: This finds LABELs where they are defined.  How to we use that knowledge to also
-        //       highigth them where they subsequently occur in the script?
-        [/^[A-Z][\w_]*(?=:)/, 'entity.name.function' ],  // Labels
+        // Label declarations of the form '<label>:'       
+        [/^[A-Z][\w_]*(?=:)/, 'entity.name.function' ], 
 
         // Camel case colors
         [/[A-Z]\w*/, { cases: { '@colorsCamelCase': 'constant.language',
