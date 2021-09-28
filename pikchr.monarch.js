@@ -15,14 +15,22 @@
 //        possible, so repeating them (per the spec) makes the implementation more
 //        maintainable.
 //
-// TODO:
-//    - Units in '$r = 0.2in' are incorrectly colored as a 'keyword' (because 'in'
-//      is both a keyword and a unit).  Fix.
-//    - Units in '1.5px' incorrectly tokenized.  Fix.  (Generally <float><unit>).
+// KNOWN ISSUES:
+//      - pikchr supports the syntax `expr %`, so it is possible to write:
+//           $size_percentage
+//           circle "circle" radius $size_percentage %
+//        The space between expr and the % is optional.
+//        We currently DO NOT attempt to tokenize the "%" in this case.
+//        We DO (however) tokenize percentages expressed as constants with no
+//        intervening space (e.g. '50%', in which case we tokenize the entire
+//        string (including the percentage symbol) as `constant.numeric`.
+//      - The escape characters supported within strings may be more extensive than
+//        those actually supported by pikchr.
+//
 //
 return {
     // Set defaultToken to invalid to see what you do not tokenize yet
-    // defaultToken: 'invalid',
+    //defaultToken: 'invalid',
   
     statementKeywords: ['define', 'print', 'assert'],
   
@@ -167,28 +175,19 @@ return {
   
     ordinals: /\d+(st|nd|rd|th)/,
 
-    // TODO: Add float
-    numberWithUnits: /\d+(in|cm|px|pt|pc|mm)/,
+    numberWithUnits: /((\d+(\.\d+)?)|(\.?\d+))(in|cm|px|pt|pc|mm)/,
 
-    // TODO: Generalize? Really 'expr%' is supported, so maybe just make % a keyword? Floats?
-    numberPercentage: /\d+%/,
+    numberPercentage: /((\d+(\.\d+)?)|(\.?\d+))%/,
 
     // we include these common regular expressions
     symbols:  /[=><!~?:&|+\-*\/\^%]+/,
  
-    // TODO: Not sure yet what escapes pikchr support, but for now this is doing no harm.
     // C# style strings
     escapes: /\\(?:[abfnrtv\\"']|x[0-9A-Fa-f]{1,4}|u[0-9A-Fa-f]{4}|U[0-9A-Fa-f]{8})/,
   
     // The main tokenizer for our languages
     tokenizer: {
       root: [
-
-        // TODO:  Decide whether to colorize these. In Python (for example) variables are uncolored, so
-        //        it probably makes sense to do the same (i.e. let them "default" to the 'identifier'
-        //        token class)
-        // Variables of the form '$<variable_name>'
-        // [/\$\S+/, 'variable.parameter' ],
 
         // Label declarations of the form '<label>:'       
         [/^[A-Z][\w_]*(?=:)/, 'entity.name.function' ], 
