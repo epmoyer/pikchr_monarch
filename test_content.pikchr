@@ -15,10 +15,13 @@ test.x test.y test.ht.x.y.sw.n x y sw n
 object.n
 n of object 
 previous.radius 
-# Arrow head specifiers
+/* Arrow head specifiers */
 test arrow - <- <-> -> + * 
-# expressionKeywords
+// expressionKeywords
 sin(this) cos(this) max(a, b)
+/* Multi-line
+ * Comment
+ */
 
 # -----------------
 # How To Build Pikchr

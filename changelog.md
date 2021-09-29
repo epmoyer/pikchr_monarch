@@ -9,11 +9,12 @@ to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 ## Unreleased
 (none)
 
-## 1.1.0 2021-09-28
+## 1.1.0 2021-09-29
 ### Changed
-- Changed `operators` token class to `operator`.
+- Chang `operators` token class to `operator`.
 ### Added
-- Added `monokai_monaco_retheming.js` to the project.  It can be used to inject the monokai
+- Support `\\` and `\* *\` style comments.
+- Add `monokai_monaco_retheming.js` to the project.  It can be used to inject the monokai
   theme into the online monarch/monaco editor.
 
 ## 1.0.0 2021-09-28

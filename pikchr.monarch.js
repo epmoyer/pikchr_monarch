@@ -268,6 +268,13 @@ return {
         [/(')(@escapes)(')/, ['string','string.escape','string']],
         [/'/, 'string.invalid']
       ],
+
+      comment: [
+        [/[^\/*]+/, 'comment' ],
+        [/\/\*/,    'comment', '@push' ],    // nested comment
+        ["\\*/",    'comment', '@pop'  ],
+        [/[\/*]/,   'comment' ]
+      ],
   
       string: [
         [/[^\\"]+/,  'string'],
@@ -278,7 +285,9 @@ return {
   
       whitespace: [
         [/[ \t\r\n]+/, 'white'],
-        [/(^#.*$)/, 'comment'],
+        [/\/\*/,       'comment', '@comment' ],   // '/*  */' Block comments
+        [/(^#.*$)/,    'comment'],                // '#'  Single-line comments
+        [/\/\/.*$/,    'comment'],                // '//' Single-line comments
       ],
     },
   };
